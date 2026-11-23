@@ -12,7 +12,6 @@ interface FolderCardProps {
 
 export const FolderCard: React.FC<FolderCardProps> = ({ project, index, onSelect }) => {
   const { language } = useLanguage();
-  const isLarge = project.featured;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -29,9 +28,7 @@ export const FolderCard: React.FC<FolderCardProps> = ({ project, index, onSelect
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.5, delay: index * 0.06 }}
       onMouseMove={handleMouseMove}
-      className={`group relative flex flex-col rounded-2xl border border-border bg-bg-secondary hover:border-accent/40 transition-all duration-300 spotlight-card shadow-card-light dark:shadow-card-dark overflow-hidden ${
-        isLarge ? 'md:col-span-2' : ''
-      }`}
+      className="group relative flex flex-col rounded-2xl border border-border bg-bg-secondary hover:border-accent/40 transition-all duration-300 spotlight-card shadow-card-light dark:shadow-card-dark overflow-hidden"
     >
       {/* Folder Tab Notch Header */}
       <div className="flex items-center justify-between px-5 pt-3.5 pb-2.5 border-b border-border/40 bg-bg-tertiary/40">

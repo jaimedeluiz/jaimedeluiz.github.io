@@ -78,7 +78,7 @@ export const portfolioData: PortfolioData = {
   projects: [
     {
       id: 'matching-engine',
-      featured: true,
+      featured: false,
       category: {
         en: 'Systems & High-Frequency Trading',
         es: 'Sistemas y Trading de Alta Frecuencia',

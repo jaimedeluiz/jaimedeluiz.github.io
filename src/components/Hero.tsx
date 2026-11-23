@@ -1,15 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, ArrowRight, Mail, Terminal } from 'lucide-react';
+import { ArrowDown, ArrowRight, Mail } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { portfolioData } from '../data/portfolioData';
 import { MagneticButton } from './MagneticButton';
 
-interface HeroProps {
-  onOpenTerminal?: () => void;
-}
-
-export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
+export const Hero: React.FC = () => {
   const { language } = useLanguage();
   const { profile } = portfolioData;
 
@@ -89,18 +85,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
                 <Mail className="w-4 h-4 text-fg-muted" />
                 <span>{language === 'en' ? 'Contact' : 'Contacto'}</span>
               </MagneticButton>
-
-              {/* Terminal quick launcher */}
-              {onOpenTerminal && (
-                <button
-                  onClick={onOpenTerminal}
-                  className="flex items-center gap-1.5 px-3.5 py-3 rounded-xl border border-border/80 bg-bg-secondary/60 text-fg-muted hover:text-fg-primary hover:border-border-strong text-xs font-mono transition-colors interactive"
-                  title="Open interactive terminal"
-                >
-                  <Terminal className="w-3.5 h-3.5 text-emerald-500" />
-                  <span>terminal</span>
-                </button>
-              )}
             </motion.div>
           </div>
 

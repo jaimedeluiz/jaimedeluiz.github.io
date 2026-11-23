@@ -65,7 +65,7 @@ const PortfolioContent: React.FC = () => {
       {/* Main Content Sections */}
       <main className="relative z-10 flex flex-col">
         {/* Section 0: Hero */}
-        <Hero onOpenTerminal={() => setShowIntro(true)} />
+        <Hero />
 
         {/* Section 1: Projects (Folder Cards with Hover Preview & Modal Overlays) */}
         <ProjectsSection />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, ArrowRight, Mail, Sparkles, Terminal } from 'lucide-react';
+import { ArrowDown, ArrowRight, Mail, Terminal } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { portfolioData } from '../data/portfolioData';
 import { MagneticButton } from './MagneticButton';
@@ -12,7 +12,6 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
   const { language } = useLanguage();
   const { profile } = portfolioData;
-  const highlight = profile.heroHighlight[language];
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -36,7 +35,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping inline-block" />
             <span>{language === 'en' ? "Hi, I'm Jaime" : 'Hola, soy Jaime'}</span>
             <span className="text-border-strong">•</span>
-            <span className="text-accent">{profile.title[language]}</span>
+            <span className="text-accent">{profile.status[language]}</span>
           </span>
         </motion.div>
 
@@ -48,23 +47,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-[4rem] font-bold tracking-tight text-fg-primary leading-[1.12]"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[4.2rem] font-bold tracking-tight text-fg-primary leading-[1.08]"
             >
-              {highlight.prefix}
-              <span className="font-editorial text-accent italic font-normal px-1 relative inline-block">
-                {highlight.highlight1}
-                <motion.span
-                  className="absolute bottom-1 left-0 right-0 h-[2px] bg-accent/40 rounded-full"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ delay: 0.8, duration: 0.6 }}
-                />
+              Jaime de Luiz
+              <span className="block font-editorial text-accent italic font-normal text-3xl sm:text-4xl md:text-5xl lg:text-6xl mt-1">
+                {profile.title[language]}
               </span>
-              {highlight.middle}
-              <span className="relative inline-block text-fg-primary font-extrabold underline decoration-accent/40 decoration-wavy decoration-1 underline-offset-8">
-                {highlight.highlight2}
-              </span>
-              {highlight.suffix}
             </motion.h1>
 
             {/* Concise Summary Paragraph */}
@@ -77,28 +65,12 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
               {profile.summary[language]}
             </motion.p>
 
-            {/* Tech badges pill */}
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.35 }}
-              className="flex flex-wrap items-center gap-2.5 pt-1"
-            >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-bg-secondary text-fg-muted text-xs font-mono">
-                <Sparkles className="w-3.5 h-3.5 text-accent" />
-                <span>Java · C++20 · Python · TypeScript</span>
-              </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-bg-secondary text-fg-muted text-xs font-mono">
-                <span>React · Spring Boot · FastAPI</span>
-              </div>
-            </motion.div>
-
             {/* Action Buttons */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
-              className="flex flex-wrap items-center gap-4 pt-3"
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className="flex flex-wrap items-center gap-4 pt-2"
             >
               {/* Primary: Explore Projects */}
               <MagneticButton
@@ -164,7 +136,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
 
                   {/* TODO Note badge */}
                   <div className="relative z-10 mt-5 px-3 py-1.5 rounded-full bg-bg-secondary/90 border border-dashed border-border-strong text-[11px] font-mono text-fg-muted shadow-sm">
-                    {/* TODO: Place profile photo in public/photo.jpg */}
                     <span>📷 TODO: Photo slot</span>
                   </div>
                 </div>
@@ -201,4 +172,3 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
     </section>
   );
 };
-

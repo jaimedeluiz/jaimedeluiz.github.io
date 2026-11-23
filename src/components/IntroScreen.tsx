@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, ArrowRight, MousePointerClick, Zap } from 'lucide-react';
+import { ArrowRight, Zap } from 'lucide-react';
 import { MagneticButton } from './MagneticButton';
 
 interface IntroScreenProps {
@@ -28,7 +28,6 @@ interface Shockwave {
 
 export const IntroScreen: React.FC<IntroScreenProps> = ({ onEnter }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [clickCount, setClickCount] = useState(0);
   const [physicsMode, setPhysicsMode] = useState<'gravity' | 'repel'>('gravity');
 
   useEffect(() => {
@@ -112,7 +111,6 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onEnter }) => {
     const onMouseDown = (e: MouseEvent) => {
       mouse.isDown = true;
       triggerShockwave(e.clientX, e.clientY);
-      setClickCount((c) => c + 1);
     };
 
     const onMouseUp = () => {
@@ -192,12 +190,10 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onEnter }) => {
         if (dist < 220) {
           const force = (1 - dist / 220) * 0.9;
           if (physicsMode === 'gravity') {
-            // Swirl / pull towards pointer
             const angle = Math.atan2(dy, dx) + Math.PI * 0.45;
             p.vx += Math.cos(angle) * force * 0.9 + (dx / dist) * force * 0.6;
             p.vy += Math.sin(angle) * force * 0.9 + (dy / dist) * force * 0.6;
           } else {
-            // Repel strongly away
             p.vx -= (dx / dist) * force * 2.2;
             p.vy -= (dy / dist) * force * 2.2;
           }
@@ -271,43 +267,28 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onEnter }) => {
           <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-accent to-blue-400 text-white flex items-center justify-center font-bold text-xs tracking-wider shadow-lg shadow-accent/20">
             JDL
           </div>
-          <div className="flex flex-col">
-            <span className="font-semibold text-sm tracking-tight text-white">
-              Jaime de Luiz García
-            </span>
-            <span className="text-[11px] text-zinc-400 font-mono">Interactive Entrance Canvas</span>
-          </div>
+          <span className="font-semibold text-sm tracking-tight text-white">
+            Jaime de Luiz García
+          </span>
         </div>
 
-        {/* Physics mode toggle badge */}
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => setPhysicsMode((m) => (m === 'gravity' ? 'repel' : 'gravity'))}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-xs font-mono text-zinc-300 transition-colors backdrop-blur-md"
-            title="Switch Pointer Physics"
-          >
-            <Zap className="w-3.5 h-3.5 text-accent" />
-            <span>Mode: {physicsMode === 'gravity' ? 'Vortex Pull' : 'Kinetic Repel'}</span>
-          </button>
-        </div>
+        {/* Physics mode toggle button */}
+        <button
+          onClick={() => setPhysicsMode((m) => (m === 'gravity' ? 'repel' : 'gravity'))}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-xs font-mono text-zinc-300 transition-colors backdrop-blur-md"
+          title="Switch Pointer Physics"
+        >
+          <Zap className="w-3.5 h-3.5 text-accent" />
+          <span>Mode: {physicsMode === 'gravity' ? 'Vortex Pull' : 'Kinetic Repel'}</span>
+        </button>
       </div>
 
-      {/* Center Interactive Hero Typography */}
+      {/* Center Hero */}
       <div className="relative z-10 max-w-2xl mx-auto text-center flex flex-col items-center gap-6 my-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-xs font-mono text-zinc-300 shadow-sm"
-        >
-          <Sparkles className="w-3.5 h-3.5 text-accent animate-pulse" />
-          <span>Move cursor to warp field · Click to pulse shockwaves</span>
-        </motion.div>
-
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.08]"
         >
           Jaime de Luiz
@@ -319,17 +300,17 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onEnter }) => {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
           className="text-sm sm:text-base text-zinc-400 max-w-lg leading-relaxed font-sans"
         >
-          Welcome to my digital space. Play with the pointer gravity field above, or enter to view full projects, case studies, and journey.
+          Welcome to my digital space. Interact with the pointer physics field, or enter to explore projects and case studies.
         </motion.p>
 
         {/* Enter Portfolio Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
           className="pt-4 flex flex-col items-center gap-3"
         >
           <MagneticButton
@@ -350,19 +331,9 @@ export const IntroScreen: React.FC<IntroScreenProps> = ({ onEnter }) => {
         </motion.div>
       </div>
 
-      {/* Bottom Footer Interactive Info */}
-      <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between text-xs font-mono text-zinc-500 gap-2 border-t border-white/5 pt-4">
-        <div className="flex items-center gap-2">
-          <MousePointerClick className="w-3.5 h-3.5 text-accent" />
-          <span>Shockwaves triggered: {clickCount}</span>
-        </div>
-
-        <button
-          onClick={onEnter}
-          className="text-zinc-400 hover:text-white transition-colors underline underline-offset-4 cursor-pointer"
-        >
-          Skip intro →
-        </button>
+      {/* Clean bottom anchor */}
+      <div className="relative z-10 flex items-center justify-center text-xs font-mono text-zinc-500">
+        <span className="opacity-40">© 2026 Jaime de Luiz</span>
       </div>
     </motion.div>
   );

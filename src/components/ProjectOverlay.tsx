@@ -240,3 +240,4 @@ export const ProjectOverlay: React.FC<ProjectOverlayProps> = ({ project, onClose
     </AnimatePresence>
   );
 };
+

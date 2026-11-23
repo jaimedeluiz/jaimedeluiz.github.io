@@ -9,13 +9,17 @@ describe('Portfolio Verification & Facts Integrity', () => {
     expect(portfolioData.profile.linkedin).toBe('https://linkedin.com/in/jaimedeluiz');
   });
 
-  it('includes all 5 core projects with accurate GitHub repositories', () => {
+  it('includes all core projects with accurate GitHub repositories', () => {
     const projectIds = portfolioData.projects.map((p) => p.id);
     expect(projectIds).toContain('matching-engine');
     expect(projectIds).toContain('distributed-rate-limiter');
     expect(projectIds).toContain('fairshare');
     expect(projectIds).toContain('outfeed');
     expect(projectIds).toContain('checkstyle');
+    expect(projectIds).toContain('barbershop-planner');
+
+    const barbershop = portfolioData.projects.find((p) => p.id === 'barbershop-planner');
+    expect(barbershop?.githubUrl).toBe('https://github.com/jaimedeluiz/barbershop-appointment-planner');
 
     const matchingEngine = portfolioData.projects.find((p) => p.id === 'matching-engine');
     expect(matchingEngine?.tags).toContain('C++20');

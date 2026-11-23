@@ -115,7 +115,7 @@ export const ContactSection: React.FC = () => {
               <div>
                 <span className="font-mono text-xs text-fg-muted block">LinkedIn</span>
                 <span className="font-semibold text-sm text-fg-primary group-hover:text-accent transition-colors">
-                  /in/jaimedeluiz
+                  jaimedeluiz
                 </span>
               </div>
             </a>

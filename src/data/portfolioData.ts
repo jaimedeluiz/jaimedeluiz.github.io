@@ -530,6 +530,85 @@ export const portfolioData: PortfolioData = {
         ],
       },
     },
+    {
+      id: 'barbershop-planner',
+      featured: false,
+      category: {
+        en: 'Full-Stack & Web Engineering',
+        es: 'Full-Stack e Ingeniería Web',
+      },
+      title: 'Barbershop Appointment Planner',
+      subtitle: {
+        en: 'Mobile-first appointment planner with dynamic interval scheduling & zero double-booking.',
+        es: 'Planificador de citas mobile-first con algoritmos de intervalos dinámicos y cero solapamientos.',
+      },
+      summary: {
+        en: 'Production-grade mobile-first barbershop appointment planner built with React 18, TypeScript & Tailwind CSS. Features dynamic interval scheduling algorithms with zero double-booking, reactive event-driven state sync, and automated background reminder engine.',
+        es: 'Planificador de citas para barberías mobile-first construido con React 18, TypeScript y Tailwind CSS. Incluye algoritmos de intervalos dinámicos sin solapamiento de citas, sincronización de estado reactiva y motor automatizado de recordatorios.',
+      },
+      badge: {
+        text: 'React 18 + TS',
+        subtext: 'Interval Scheduling',
+      },
+      tags: ['React 18', 'TypeScript', 'Tailwind CSS', 'Scheduling Algorithms', 'State Sync', 'Outbox Pattern'],
+      metrics: [
+        { value: '0', label: 'Double Bookings' },
+        { value: '24h', label: 'Automated Reminders' },
+        { value: '100%', label: 'Mobile Responsive' },
+      ],
+      githubUrl: 'https://github.com/jaimedeluiz/barbershop-appointment-planner',
+      caseStudy: {
+        problem: {
+          en: 'Appointment scheduling in service businesses frequently suffers from slot collisions, double bookings under concurrent submissions, and high friction for clients having to navigate clunky booking portals.',
+          es: 'La reserva de citas en negocios de servicios sufre frecuentemente de colisiones de horarios, reservas duplicadas por envíos concurrentes y fricción para clientes que deben usar portales complejos.',
+        },
+        architecture: {
+          en: 'A reactive React 18 application with clean architecture separation: scheduling engine validates overlapping intervals in O(N log N) using sorted timeline arrays, an Outbox pattern dispatches notification reminders, and a unified state management layer synchronizes client booking with staff admin dashboards.',
+          es: 'Aplicación reactiva en React 18 con arquitectura limpia: motor de reservas que valida solapamientos de intervalos en O(N log N) mediante ordenación temporal, patrón Outbox para programar recordatorios y sincronización de estado entre clientes y panel de administración.',
+          steps: [
+            {
+              name: 'Dynamic Slot Generation',
+              detail: 'Calculates variable time windows dynamically based on barber availability and service durations.',
+            },
+            {
+              name: 'Interval Collision Detection',
+              detail: 'Strict mathematical interval validation ensuring zero overlapping bookings.',
+            },
+            {
+              name: 'Outbox Notification Engine',
+              detail: 'Schedules automated reminders 24h prior to customer appointments.',
+            },
+          ],
+        },
+        keyDecisions: {
+          en: [
+            {
+              title: 'Interval Array Math vs Naive Grid',
+              reason: 'Validates arbitrary service durations cleanly rather than enforcing rigid hourly blocks.',
+            },
+          ],
+          es: [
+            {
+              title: 'Matemática de Intervalos vs Cuadrícula Rígida',
+              reason: 'Permite duraciones de servicios variables de forma limpia sin forzar bloques horarios rígidos.',
+            },
+          ],
+        },
+        results: {
+          en: [
+            'Zero double-booking errors validated across extensive overlapping test scenarios.',
+            'Smooth mobile-first customer checkout and live staff dashboard view.',
+          ],
+          es: [
+            'Cero solapamientos de citas en todas las pruebas de concurrencia y solapamiento.',
+            'Experiencia de reserva fluida optimizada para smartphones y panel de gestión en vivo.',
+          ],
+        },
+        links: [
+          { label: 'GitHub Repository', url: 'https://github.com/jaimedeluiz/barbershop-appointment-planner' },
+        ],
+      },
+    },
   ],
 
   experience: [

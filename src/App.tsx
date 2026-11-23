@@ -3,7 +3,6 @@ import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider } from './context/LanguageContext';
 import { SmoothScrollProvider } from './components/SmoothScroll';
-import { CustomCursor } from './components/CustomCursor';
 import { CursorMesh } from './components/CursorMesh';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { Navbar } from './components/Navbar';
@@ -53,9 +52,8 @@ const PortfolioContent: React.FC = () => {
       {/* Background Interactive Mesh */}
       <CursorMesh />
 
-      {/* Progress Bar & Custom Cursor */}
+      {/* Progress Bar */}
       <ScrollProgressBar />
-      <CustomCursor />
 
       {/* Navigation Header */}
       <Navbar

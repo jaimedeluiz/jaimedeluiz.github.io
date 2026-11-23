@@ -23,7 +23,7 @@ export const ProjectsSection: React.FC = () => {
     if (selectedFilter === 'all') return true;
     if (selectedFilter === 'systems') return project.id === 'matching-engine';
     if (selectedFilter === 'distributed') return project.id === 'distributed-rate-limiter';
-    if (selectedFilter === 'fullstack') return project.id === 'fairshare' || project.id === 'outfeed';
+    if (selectedFilter === 'fullstack') return project.id === 'fairshare' || project.id === 'outfeed' || project.id === 'barbershop-planner';
     if (selectedFilter === 'opensource') return project.id === 'checkstyle';
     return true;
   });
@@ -96,3 +96,4 @@ export const ProjectsSection: React.FC = () => {
     </section>
   );
 };
+

@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Command, Menu, X, FileDown, ArrowUpRight, Sparkles } from 'lucide-react';
+import { Sun, Moon, Menu, X, FileDown, ArrowUpRight, RotateCcw } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { useLanguage } from '../context/LanguageContext';
 import { portfolioData } from '../data/portfolioData';
 
 interface NavbarProps {
-  onOpenCommandPalette: () => void;
   activeSection: string;
+  onOpenCommandPalette?: () => void;
   onOpenIntro?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette, activeSection, onOpenIntro }) => {
+export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenIntro }) => {
   const { theme, toggleTheme } = useTheme();
   const { language, toggleLanguage } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -100,27 +100,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette, activeSect
 
         {/* Right utility buttons */}
         <div className="flex items-center gap-2">
-          {/* Replay Intro / Interactive Canvas */}
+          {/* Go back to entry / intro screen */}
           {onOpenIntro && (
             <button
               onClick={onOpenIntro}
-              className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border bg-bg-secondary text-fg-muted hover:text-fg-primary hover:border-border-strong text-xs font-mono transition-colors interactive"
-              title="Interactive Pointer Canvas"
+              className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border bg-bg-secondary text-fg-muted hover:text-fg-primary hover:border-border-strong text-xs font-mono transition-colors"
+              title={language === 'en' ? 'Go back to intro screen' : 'Volver a la pantalla inicial'}
             >
-              <Sparkles className="w-3.5 h-3.5 text-accent" />
-              <span className="text-[11px] font-medium">Canvas</span>
+              <RotateCcw className="w-3.5 h-3.5 text-accent" />
+              <span className="text-[11px] font-medium">
+                {language === 'en' ? 'Intro Screen' : 'Pantalla Inicial'}
+              </span>
             </button>
           )}
-
-          {/* Command Palette Trigger */}
-          <button
-            onClick={onOpenCommandPalette}
-            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border bg-bg-secondary text-fg-muted hover:text-fg-primary hover:border-border-strong text-xs font-mono transition-colors interactive"
-            title={language === 'en' ? 'Open Command Palette (Cmd+K)' : 'Abrir Paleta de Comandos (Cmd+K)'}
-          >
-            <Command className="w-3.5 h-3.5 text-accent" />
-            <span className="text-[11px] font-medium">⌘K</span>
-          </button>
 
           {/* Language Switch */}
           <button

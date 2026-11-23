@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Command, Menu, X, FileDown, ArrowUpRight } from 'lucide-react';
+import { Sun, Moon, Command, Menu, X, FileDown, ArrowUpRight, Sparkles } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
 import { useLanguage } from '../context/LanguageContext';
 import { portfolioData } from '../data/portfolioData';
@@ -8,9 +8,10 @@ import { portfolioData } from '../data/portfolioData';
 interface NavbarProps {
   onOpenCommandPalette: () => void;
   activeSection: string;
+  onOpenIntro?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette, activeSection }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette, activeSection, onOpenIntro }) => {
   const { theme, toggleTheme } = useTheme();
   const { language, toggleLanguage } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -99,6 +100,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCommandPalette, activeSect
 
         {/* Right utility buttons */}
         <div className="flex items-center gap-2">
+          {/* Replay Intro / Interactive Canvas */}
+          {onOpenIntro && (
+            <button
+              onClick={onOpenIntro}
+              className="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-border bg-bg-secondary text-fg-muted hover:text-fg-primary hover:border-border-strong text-xs font-mono transition-colors interactive"
+              title="Interactive Pointer Canvas"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-accent" />
+              <span className="text-[11px] font-medium">Canvas</span>
+            </button>
+          )}
+
           {/* Command Palette Trigger */}
           <button
             onClick={onOpenCommandPalette}

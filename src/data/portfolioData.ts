@@ -8,28 +8,28 @@ export const portfolioData: PortfolioData = {
       es: 'Ingeniero de Software',
     },
     tagline: {
-      en: 'Building low-latency systems & distributed products',
-      es: 'Construyendo sistemas de baja latencia y productos distribuidos',
+      en: 'Building clean architecture & modern full-stack products',
+      es: 'Construyendo arquitectura limpia y productos full-stack modernos',
     },
     heroHighlight: {
       en: {
         prefix: 'Software engineer building ',
-        highlight1: 'low-latency systems',
+        highlight1: 'clean systems',
         middle: ' and ',
         highlight2: 'full-stack products',
         suffix: '.',
       },
       es: {
-        prefix: 'Ingeniero de software diseñando ',
-        highlight1: 'sistemas de baja latencia',
+        prefix: 'Ingeniero de software creando ',
+        highlight1: 'sistemas limpios',
         middle: ' y ',
         highlight2: 'productos full-stack',
         suffix: '.',
       },
     },
     summary: {
-      en: 'Driven Software Engineering student focused on low-latency systems, distributed architectures, and full-stack development. Bilingual (English/Spanish) with international exchange experience, adaptable to global teams, and fully willing to relocate.',
-      es: 'Estudiante de Ingeniería de Software enfocado en sistemas de baja latencia, arquitecturas distribuidas y desarrollo full-stack. Bilingüe (inglés/español) con experiencia académica internacional, adaptable a equipos globales y con total disponibilidad para reubicación.',
+      en: 'Driven Software Engineering student focused on full-stack development and building innovative, production-ready applications. Bilingual (English/Spanish) with international exchange experience, adaptable to global teams, and fully willing to relocate.',
+      es: 'Estudiante de Ingeniería de Software enfocado en desarrollo full-stack y en crear aplicaciones innovadoras listas para producción. Bilingüe (inglés/español) con experiencia académica internacional, adaptable a equipos globales y con total disponibilidad para reubicación.',
     },
     status: {
       en: 'Open to Opportunities',

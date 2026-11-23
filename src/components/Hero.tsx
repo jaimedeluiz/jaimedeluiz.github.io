@@ -77,19 +77,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTerminal }) => {
               {profile.summary[language]}
             </motion.p>
 
-            {/* Key metric highlights pill */}
+            {/* Tech badges pill */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.35 }}
-              className="flex flex-wrap items-center gap-3 pt-1"
+              className="flex flex-wrap items-center gap-2.5 pt-1"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-accent/25 bg-accent-soft text-accent text-xs font-mono font-medium">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>C++20 · 2.75M+ ops/sec · 167ns latency</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-bg-secondary text-fg-muted text-xs font-mono">
+                <Sparkles className="w-3.5 h-3.5 text-accent" />
+                <span>Java · C++20 · Python · TypeScript</span>
               </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border bg-bg-secondary text-fg-muted text-xs font-mono">
-                <span>FastAPI · Redis · Java 17</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-border bg-bg-secondary text-fg-muted text-xs font-mono">
+                <span>React · Spring Boot · FastAPI</span>
               </div>
             </motion.div>
 

@@ -10,19 +10,20 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  // Always default to English on initial visit
   const [language, setLanguageState] = useState<Language>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('jdl_lang') as Language;
       if (saved === 'en' || saved === 'es') return saved;
-      const navLang = navigator.language.slice(0, 2);
-      return navLang === 'es' ? 'es' : 'en';
     }
     return 'en';
   });
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem('jdl_lang', lang);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('jdl_lang', lang);
+    }
   };
 
   const toggleLanguage = () => {
@@ -30,8 +31,10 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   useEffect(() => {
-    localStorage.setItem('jdl_lang', language);
-    document.documentElement.lang = language;
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('jdl_lang', language);
+      document.documentElement.lang = language;
+    }
   }, [language]);
 
   return (
@@ -46,4 +49,3 @@ export const useLanguage = () => {
   if (!context) throw new Error('useLanguage must be used within LanguageProvider');
   return context;
 };
-

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
 import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { SmoothScrollProvider } from './components/SmoothScroll';
@@ -7,13 +8,17 @@ import { CursorMesh } from './components/CursorMesh';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { IntroScreen } from './components/IntroScreen';
 
 const PortfolioContent: React.FC = () => {
   const { language } = useLanguage();
   const [activeSection, setActiveSection] = useState('home');
+  // Initial entrance screen where visitors can play with the pointer
+  const [showIntro, setShowIntro] = useState(true);
 
   // Track active section for navbar indicator
   useEffect(() => {
+    if (showIntro) return;
     const sectionIds = ['home', 'projects', 'about', 'experience', 'contact'];
     const handleScroll = () => {
       const scrollPos = window.scrollY + 200;
@@ -28,16 +33,20 @@ const PortfolioContent: React.FC = () => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [showIntro]);
 
   const handleOpenCommandPalette = () => {
-    // Stage 3 will mount the CmdK modal; for now dispatch event or log
     const event = new CustomEvent('toggle-cmdk');
     window.dispatchEvent(event);
   };
 
   return (
     <div className="relative min-h-screen bg-bg-primary text-fg-primary selection:bg-accent-soft selection:text-fg-accent">
+      {/* Interactive Initial Screen */}
+      <AnimatePresence>
+        {showIntro && <IntroScreen onEnter={() => setShowIntro(false)} />}
+      </AnimatePresence>
+
       {/* Background Interactive Mesh */}
       <CursorMesh />
 
@@ -49,14 +58,15 @@ const PortfolioContent: React.FC = () => {
       <Navbar
         onOpenCommandPalette={handleOpenCommandPalette}
         activeSection={activeSection}
+        onOpenIntro={() => setShowIntro(true)}
       />
 
       {/* Main Content Sections */}
       <main className="relative z-10 flex flex-col">
         {/* Section 1: Hero */}
-        <Hero />
+        <Hero onOpenTerminal={() => setShowIntro(true)} />
 
-        {/* Placeholder Anchor Sections for Stage 1 layout testing */}
+        {/* Placeholder Anchor Sections for Stage 1/2 layout */}
         <section
           id="projects"
           className="min-h-[50vh] max-w-6xl mx-auto px-6 py-24 w-full flex flex-col justify-center border-t border-border/40"
@@ -70,8 +80,8 @@ const PortfolioContent: React.FC = () => {
             </h2>
             <p className="text-sm text-fg-muted max-w-xl font-mono mt-1">
               {language === 'en'
-                ? 'Folder cards previewing on hover and animated case study overlays coming in Stage 2.'
-                : 'Tarjetas tipo carpeta con previsualización al pasar el ratón y overlays de caso de estudio en la Etapa 2.'}
+                ? 'High-performance systems: C++20 Order Matching Engine (2.75M+ ops/s, 167ns latency), Distributed Rate Limiter, FairShare, Outfeed, and Checkstyle.'
+                : 'Sistemas de alto rendimiento: Motor de Casación en C++20 (2.75M+ ops/s, 167ns latencia), Rate Limiter Distribuido, FairShare, Outfeed y Checkstyle.'}
             </p>
           </div>
         </section>
@@ -121,7 +131,7 @@ const PortfolioContent: React.FC = () => {
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-border py-8 px-6 text-center text-xs text-fg-muted font-mono">
-        <p>© 2026 Jaime de Luiz García. Designed with precision & low latency.</p>
+        <p>© 2026 Jaime de Luiz García. Designed with precision & craftsmanship.</p>
       </footer>
     </div>
   );
@@ -140,4 +150,3 @@ export const App: React.FC = () => {
 };
 
 export default App;
-

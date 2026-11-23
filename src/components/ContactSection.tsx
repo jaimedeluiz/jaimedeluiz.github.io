@@ -161,7 +161,7 @@ export const ContactSection: React.FC = () => {
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder={language === 'en' ? 'Ada Lovelace' : 'Ada Lovelace'}
+                  placeholder="Jack Smith"
                   className="px-4 py-2.5 rounded-xl border border-border bg-bg-tertiary text-fg-primary text-sm focus:outline-none focus:border-accent transition-colors"
                 />
               </div>
@@ -192,8 +192,8 @@ export const ContactSection: React.FC = () => {
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 placeholder={
                   language === 'en'
-                    ? 'Tell me about your team, role, or project...'
-                    : 'Cuéntame sobre tu equipo, posición o proyecto...'
+                    ? 'Hey Jaime, saw your portfolio and wanted to connect about...'
+                    : 'Hola Jaime, vi tus proyectos y me gustaría que habláramos sobre...'
                 }
                 className="px-4 py-2.5 rounded-xl border border-border bg-bg-tertiary text-fg-primary text-sm focus:outline-none focus:border-accent transition-colors resize-none"
               />

@@ -28,7 +28,7 @@ interface Shockwave {
 
 export const IntroScreen: React.FC<IntroScreenProps> = ({ onEnter }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [physicsMode, setPhysicsMode] = useState<'gravity' | 'repel'>('gravity');
+  const [physicsMode, setPhysicsMode] = useState<'gravity' | 'repel'>('repel');
 
   useEffect(() => {
     const canvas = canvasRef.current;

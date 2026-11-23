@@ -305,7 +305,7 @@ export const portfolioData: PortfolioData = {
         { value: 'Live', label: 'WebSocket Sync' },
         { value: 'Zero', label: 'App Install Friction' },
       ],
-      githubUrl: 'https://github.com/jaimedeluiz/fairshare',
+      githubUrl: 'https://github.com/jaimedeluiz/fairshare-bill-splitter',
       caseStudy: {
         problem: {
           en: 'Splitting group expenses at restaurants is notoriously chaotic: traditional apps require every participant to download apps and create accounts. Moreover, uneven distribution of discounts, tips, and taxes frequently suffers from floating-point rounding errors where shares do not sum to the total.',
@@ -396,7 +396,7 @@ export const portfolioData: PortfolioData = {
         { value: 'Weather', label: 'Live Weather Integration' },
         { value: '7-Day', label: 'Automated Outfit Schedule' },
       ],
-      githubUrl: 'https://github.com/jaimedeluiz/outfeed', // TODO placeholder if private
+      githubUrl: 'https://github.com/jaimedeluiz/Outfeed-Virtual-Wardrobe',
       caseStudy: {
         problem: {
           en: 'Managing personal wardrobes and selecting appropriate daily outfits considering personal aesthetics, dress codes, laundry cycles, and fluctuating weather forecasts is time-consuming and fragmented across disparate apps.',
@@ -524,8 +524,9 @@ export const portfolioData: PortfolioData = {
           ],
         },
         links: [
-          { label: 'Checkstyle Repository', url: 'https://github.com/checkstyle/checkstyle' },
-          { label: 'Merged Pull Requests (TODO)', url: 'https://github.com/checkstyle/checkstyle/pulls?q=is%3Apr+author%3Ajaimedeluiz', isPlaceholder: true },
+          { label: 'Checkstyle Fork', url: 'https://github.com/jaimedeluiz/checkstyle' },
+          { label: 'Merged Pull Request #22944', url: 'https://github.com/checkstyle/checkstyle/pull/22944' },
+          { label: 'Upstream Repository', url: 'https://github.com/checkstyle/checkstyle' },
         ],
       },
     },
